@@ -5,12 +5,13 @@ from selenium import webdriver
 from functools import partial
 
 if __name__ == '__main__':
-    max_accounts = 10
+    max_accounts = 2
+    url = r'https://www.avito.ru/rossiya/lichnye_veschi'
     data = {}
 
     with webdriver.Chrome() as browser:
-        parser = partial(parse, browser=browser)
-        searcher = search(driver=browser, url=r'https://www.avito.ru/rossiya/lichnye_veschi', max_accounts=max_accounts)
+        parser = partial(parse, browser)
+        searcher = search(driver=browser, url=url, max_accounts=max_accounts)
         
         for key, item in parser(next(searcher)).items():
             data[key] = [item]
