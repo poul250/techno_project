@@ -1,5 +1,7 @@
 def get_accounts_from_page(driver, url):
+    from time import sleep
     driver.get(url)
+    sleep(1)
     items = driver.find_elements_by_class_name('item-description-title-link')
     results = []
     links = []
